@@ -21,7 +21,8 @@ function EventPropagation() {
 
   // 4. TODO: Define handleDismissWith — call e.stopPropagation(), hide the banner, log a message
   function handleDismissWith(e) {
-
+    e.stopPropagation();
+    addLog('X clicked - we dismiss event bubbling here')
   }
 
   return (
@@ -34,10 +35,10 @@ function EventPropagation() {
           <strong>Today: Lavender Latte & Oat Croissant</strong>
 
           {/* 2. TODO: Add onClick={handleDismissWithout} to this button */}
-          <button style={{ marginLeft: '1rem' }}>✕ (no stop)</button>
+          <button onClick={() => handleDismissWithout()} style={{ marginLeft: '1rem' }}>✕ (no stop)</button>
 
           {/* 4. TODO: Add onClick={handleDismissWith} to this button */}
-          <button style={{ marginLeft: '0.5rem' }}>✕ (with stop)</button>
+          <button onClick={(e) => handleDismissWith(e)} style={{ marginLeft: '0.5rem' }}>✕ (with stop)</button>
         </div>
       )}
 

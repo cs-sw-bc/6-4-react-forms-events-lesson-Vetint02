@@ -9,7 +9,8 @@ function PreventingDefault() {
   //    - calls e.preventDefault()        (step 2)
   //    - sets submitted to true           (step 3)
   function handleSubmit(e) {
-
+    e.preventDefault();
+    setSubmitted(true);
   }
 
   // 4. TODO: If submitted is true, return a confirmation <p> instead of the form

@@ -5,7 +5,7 @@ function PassingVsCalling() {
 
   // 1. TODO: Define a named handler function that sets rang to true
   function handleRing() {
-
+    setRang(true);
   }
 
   return (
@@ -13,10 +13,10 @@ function PassingVsCalling() {
       <h2>Ring for Service</h2>
 
       {/* 2. TODO: Pass handleRing as a reference (not a call) to onClick */}
-      <button>Ring the Bell</button>
+      <button onClick={handleRing}>Ring the Bell</button>
 
       {/* 3. TODO: Use an inline arrow function on onClick instead */}
-      <button>Ring (inline arrow)</button>
+      <button onClick={() => handleRing()}>Ring (inline arrow)</button>
 
       {rang && <p>Ding! A barista will be right with you.</p>}
     </div>
