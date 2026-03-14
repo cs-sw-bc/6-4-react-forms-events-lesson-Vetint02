@@ -13,18 +13,48 @@ function BookingForm() {
   // 3. TODO: Write validate — check name is filled, email contains '@', tickets is filled
   //    Set errors and return true if no errors, false if there are errors
   function validate() {
+    let newErrors = {}
+    let validate = true;
+    if(!name)
+    {
+      newErrors.name = 'please provide a valid name'
+      validate = false;
+    }
+    if(!email)
+    {
+      newErrors.email = 'Email is mandatory'
+      validate = false;
+    }else if (!email.includes('@'))
+    {
+      newErrors.email = 'Enter proper email'
+      validate = false;
+    }
+    setErrors(newErrors);
 
+    return true;
   }
 
   // 4. TODO: Write handleSubmit — prevent default, run validate, set submitted if valid
   function handleSubmit(e) {
-
+    e.preventDefault();
+    if(validate())
+    {
+      setSubmitted(true)
+    }
   }
 
   // 5. TODO: Derive canSubmit — true only when name, email, and tickets all have a value
-  const canSubmit = true;
+  const canSubmit = name && email && tickets;
 
   // 6. TODO: If submitted, return a confirmation message instead of the form
+  if (submitted)
+  {
+    return(
+      <div>
+        <p>Thank you, {name}. We'll keep in touch shortly!</p>
+      </div>
+    )
+  }
 
   return (
     <div>
@@ -65,7 +95,7 @@ function BookingForm() {
         <br /><br />
 
         {/* 5. TODO: Add disabled prop using canSubmit */}
-        <button type="submit">Book Now</button>
+        <button type="submit" disabled={!canSubmit}>Book Now</button>
       </form>
     </div>
   )
